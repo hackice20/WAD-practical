@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .login-btn {
+            background-color: #3B82F6;
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #2563EB;
+        }
+
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #666;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-card h3 {
+            color: #666;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-trend {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .trend-positive {
+            color: #10B981;
+        }
+
+        .trend-negative {
+            color: #EF4444;
+        }
+    
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            
+            .navbar {
+                background-color: white;
+                padding: 1rem 2rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+    
+            
+    
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-container">
+                    <h1 class="nav-title">Analytics Dashboard</h1>
+                    <a href="file:///C:/Users/yashs/OneDrive/Desktop/CODING/WAD/pract-1/login.html">
+                        <button class="login-btn">Login</button>
+                      </a>
+                      
+                </div>
+            </nav>
+        </header>
+
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <h3>Total Revenue</h3>
+                <div class="metric-value">$4,123,124,563</div>
+                <div class="metric-trend trend-positive">
+                    ↑ 12.5% vs last month
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Active Users</h3>
+                <div class="metric-value">8,742</div>
+                <div class="metric-trend trend-positive">
+                    ↑ 8.2% vs last month
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Conversion Rate</h3>
+                <div class="metric-value">4.8%</div>
+                <div class="metric-trend trend-negative">
+                    ↓ 1.1% vs last month
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <h3>Avg. Session Duration</h3>
+                <div class="metric-value">5m 42s</div>
+                <div class="metric-trend trend-positive">
+                    ↑ 0.8% vs last month
+                </div>
+            </div>
+        </section>
+
+        
+        
+    </div>
+</body>
+</html>
