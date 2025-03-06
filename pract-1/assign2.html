@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Form</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Book Subject Preference</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="subject" value="fiction" required>
+                    Fiction
+                </label>
+                <label>
+                    <input type="radio" name="subject" value="non-fiction">
+                    Non-Fiction
+                </label>
+                <label>
+                    <input type="radio" name="subject" value="mystery">
+                    Mystery
+                </label>
+                <label>
+                    <input type="radio" name="subject" value="science">
+                    Science
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="author">Favorite Author</label>
+            <select id="author" name="author" required>
+                <option value="">Select an author</option>
+                <option value="rowling">J.K. Rowling</option>
+                <option value="king">Stephen King</option>
+                <option value="martin">George R.R. Martin</option>
+                <option value="tolkien">J.R.R. Tolkien</option>
+                <option value="austen">Jane Austen</option>
+                <option value="brown">Dan Brown</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Comments on Last Book Read</label>
+            <textarea id="comments" name="comments" placeholder="Share your thoughts about the last book you read..."></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

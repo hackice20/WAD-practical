@@ -1,0 +1,93 @@
+/* Centering the login card */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1e2e, #282a36);
+  }
+  
+  /* Card Styling */
+  .login-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* Form Elements */
+  .input-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    border-color: #6a5acd;
+    box-shadow: 0 0 8px rgba(106, 90, 205, 0.5);
+  }
+  
+  /* Button Styling */
+  .login-btn {
+    width: 100%;
+    background: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-btn:hover {
+    background: #483d8b;
+  }
+  
+  /* Sign-up Link */
+  .signup-link {
+    margin-top: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .signup-link a {
+    color: #6a5acd;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomm - Premium Shopping Experience</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #212529;
+            --secondary: #f8f9fa;
+            --accent: #0d6efd;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1600/800') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-shop {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-shop:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .featured-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+            transform: translateX(-50%);
+        }
+        
+        .product-card {
+            border: none;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+        
+        .category-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wishlist-icon:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .categories-section {
+            padding: 5rem 0;
+            background-color: #f1f3f5;
+        }
+        
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        
+    
+        
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonial-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1600/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-text {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons {
+            font-size: 1.5rem;
+        }
+        
+        .social-icons a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">LUXE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sale</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="input-group me-3 d-none d-lg-flex" style="width: 250px;">
+                        <input type="text" class="form-control" placeholder="Search products...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <a href="#" class="btn btn-link text-dark me-2">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="btn btn-link text-dark me-2">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="#" class="btn btn-link text-dark position-relative">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Elevate Your Style</h1>
+                <p class="hero-subtitle">Discover the latest trends and premium quality products.</p>
+                <a href="#" class="btn btn-primary btn-lg btn-shop">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <span class="category-badge">New</span>
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRrt17_Bi9M_in5Qm5STvzp60yYDSA7nmoQVV2c9E7U81GqfY4Uwfx6FREVCNqwzncIq1dronOxF4t4gx4W6j4oHbF7pD3M" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Leather Jacket</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$299.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <span class="category-badge">Bestseller</span>
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://image4.cdnsbg.com/1/14/625607_1686176333651.jpg?width=900&height=450&q=90" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Designer Sunglasses</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$149.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://img.tatacliq.com/images/i19//1316Wx1468H/MP000000023041623_1316Wx1468H_202407262021311.jpeg" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Watch</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$599.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <span class="category-badge">Sale</span>
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="data:image/webp;base64,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" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Sneakers</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$129.99 <small class="text-decoration-line-through text-muted">$189.99</small></p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTxn9HQLAd-FKJeLS-JMwKHDWr3TMZAk5we3fEFwd5jgTnD4NZSn_obyZBOB928uUShH6wP8hD0RW65rdMhOHlRfeCB1rK9w0NnEYktp0IVxXfNiTbLfP2Mcw" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Designer Handbag</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$349.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <span class="category-badge">Limited</span>
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQfZAS5RYH3P7OWGpVDE9QEh7RsDsGe2mXXNgLRSSJ-ziu9QRcfDeGIRdUaPFsk7Xcv0jP4UuLWw4dQabOKWsV-a1AFimG2qAuHetkhUtOm-kw4iVpGEiqMNO4QkfqJcKr7sAu1QQ&usqp=CAc" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Headphones</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$249.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRMLBWA3sHne2JEBFdY86Bu_1x8GDKscsxoXaM5ufV6uUXMqt_8woOi_7yKK4e2h3LzRnXxqufHRVyMvmIyZ_IgMRFG4wabmN3kAFN7Cws&usqp=CAc" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Luxury Perfume</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$89.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card product-card">
+                        <span class="category-badge">Trending</span>
+                        <div class="wishlist-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <img src="data:image/webp;base64,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" class="card-img-top product-img" alt="Product Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Watch</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="price">$199.99</p>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-shopping-cart me-1"></i> Add
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-outline-dark">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Customers Say</h2>
+            <div class="row">
+                <!-- Testimonial 1 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/150/150" class="testimonial-avatar" alt="Customer">
+                        <p class="testimonial-text">"I've been shopping at LUXE for years and the quality never disappoints. Their premium products are worth every penny."</p>
+                        <p class="testimonial-author">Sarah Johnson</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/150/150" class="testimonial-avatar" alt="Customer">
+                        <p class="testimonial-text">"The customer service is exceptional. When I had an issue with my order, they resolved it immediately and even offered a discount on my next purchase."</p>
+                        <p class="testimonial-author">Michael Smith</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="/api/placeholder/150/150" class="testimonial-avatar" alt="Customer">
+                        <p class="testimonial-text">"The shipping is fast and the packaging is elegant. It makes receiving your order feel like a luxury experience. Highly recommend!"</p>
+                        <p class="testimonial-author">Emily Williams</p>
+                        <div class="text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Subscribe to Our Newsletter</h2>
+            <p class="cta-text">Be the first to know about new arrivals, special offers, and exclusive events. Join our community of fashion enthusiasts.</p>
+            <div class="newsletter-form">
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Your email address" aria-label="Email address">
+                    <button class="btn btn-primary" type="button">Subscribe</button>
+                </div>
+                <div class="form-check text-start">
+                    <input class="form-check-input" type="checkbox" value="" id="newsletter-consent">
+                    <label class="form-check-label" for="newsletter-consent">
+                        I agree to receive marketing emails from LUXE
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!-- About -->
+                <div class="col-md-3">
+                    <h3 class="footer-title">LUXE</h3>
+                    <p>Premium shopping experience for those who appreciate quality and style. We curate the finest products from around the world.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-md-3">
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale Items</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Collections</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Information -->
+                <div class="col-md-3">
+                    <h4 class="footer-title">Information</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="col-md-3">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Pune</li>
+                        <li><i class="fas fa-phone-alt me-2"></i> +91 72491 92754</li>
+                        <li><i class="fas fa-envelope me-2"></i> contact@yashworks.xyz</li>
+                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>&copy; 2025 LUXE. All rights reserved. Designed with <i class="fas fa-heart"></i> by Yash</p>
+                <div class="mt-3">
+                    <img src="/api/placeholder/300/40" alt="Payment Methods" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

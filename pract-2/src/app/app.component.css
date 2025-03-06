@@ -1,0 +1,19 @@
+.pill {
+    display: inline-block; /* Ensures proper button size */
+    padding: 6px 12px; /* Make it smaller */
+    background-color: #000; /* Dark background */
+    color: #fff; /* White text */
+    border-radius: 12px; /* Rounded button */
+    text-decoration: none; /* Remove default underline */
+    font-size: 16px; /* Adjust font size */
+    text-align: center;
+    cursor: pointer; /* Ensure clickability */
+  }
+  
+  .center-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+  }
+  

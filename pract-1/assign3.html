@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci Number Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+        }
+        .fibonacci-list {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .error {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Fibonacci Number Generator</h2>
+        <div>
+            <label for="numberInput">Enter the number of Fibonacci numbers to generate:</label><br><br>
+            <input type="number" id="numberInput" min="1" max="100">
+            <button onclick="generateFibonacci()">Generate</button>
+        </div>
+        <div id="error" class="error">Please enter a number between 1 and 100</div>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function generateFibonacci() {
+            const n = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
+            
+
+            if (isNaN(n) || n < 1 || n > 100) {
+                errorDiv.style.display = 'block';
+                resultDiv.innerHTML = '';
+                return;
+            }
+            
+            errorDiv.style.display = 'none';
+            
+
+            let fibArray = [1, 1];
+            for (let i = 2; i < n; i++) {
+                fibArray[i] = fibArray[i-1] + fibArray[i-2];
+            }
+            
+
+            const list = document.createElement('ol');
+            list.className = 'fibonacci-list';
+            
+            const sequence = n === 1 ? fibArray.slice(0, 1) : fibArray;
+            
+            sequence.forEach(num => {
+                const listItem = document.createElement('li');
+                listItem.textContent = num.toLocaleString(); 
+                list.appendChild(listItem);
+            });
+            
+            resultDiv.innerHTML = '<h3>First ' + n + ' Fibonacci Numbers:</h3>';
+            resultDiv.appendChild(list);
+        }
+        
+
+        document.getElementById('numberInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                generateFibonacci();
+            }
+        });
+    </script>
+</body>
+</html>
